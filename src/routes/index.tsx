@@ -3,6 +3,12 @@ import { ArrowRight, Archive, Check, Fingerprint, Radar, ScanSearch, ShieldCheck
 
 import { Button } from "@/components/ui/button";
 
+const benefits = [
+  { icon: Radar, title: "Early signals", copy: "Notice suspicious matches across names, photos, bios, and links." },
+  { icon: ScanSearch, title: "Clear review", copy: "Compare what is real with what looks wrong in one focused view." },
+  { icon: Archive, title: "Stronger evidence", copy: "Keep URLs, screenshots, notes, and timestamps together by case." },
+];
+
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
     { title: "IDENTIA — Connect the Identity. Expose the Shadow." },
@@ -56,7 +62,7 @@ function LandingPage() {
         </section>
         <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
           <div className="max-w-2xl"><p className="text-xs font-bold uppercase text-teal">The problem</p><h2 className="mt-3 text-3xl font-bold text-primary sm:text-4xl">A copied profile can move faster than the truth.</h2><p className="mt-5 leading-7 text-muted-foreground">Screenshots disappear. Handles change. Reports get scattered. IDENTIA helps you connect trusted profiles, detect suspicious copies, and preserve a clear record before the trail goes cold.</p></div>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">{[[Radar,"Early signals","Notice suspicious matches across names, photos, bios, and links."],[ScanSearch,"Clear review","Compare what is real with what looks wrong in one focused view."],[Archive,"Stronger evidence","Keep URLs, screenshots, notes, and timestamps together by case."]].map(([Icon,title,copy]) => <article key={String(title)} className="identia-card p-6"><span className="grid size-11 place-items-center rounded-lg bg-teal-soft text-teal"><Icon className="size-5" /></span><h3 className="mt-5 text-lg font-bold">{String(title)}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{String(copy)}</p></article>)}</div>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">{benefits.map(({ icon: Icon, title, copy }) => <article key={title} className="identia-card p-6"><span className="grid size-11 place-items-center rounded-lg bg-teal-soft text-teal"><Icon className="size-5" /></span><h3 className="mt-5 text-lg font-bold">{title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{copy}</p></article>)}</div>
         </section>
         <section className="border-y border-border bg-card"><div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28"><p className="text-xs font-bold uppercase text-plum">How it works</p><h2 className="mt-3 text-3xl font-bold text-primary sm:text-4xl">From identity to evidence in five steps.</h2><div className="mt-12 grid gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-5">{steps.map(([n,title,copy]) => <article key={n} className="bg-card p-6"><span className="font-display text-3xl font-bold text-amber">{n}</span><h3 className="mt-8 font-bold text-primary">{title}</h3><p className="mt-2 text-xs leading-5 text-muted-foreground">{copy}</p></article>)}</div><Button asChild size="lg" className="mt-10"><Link to="/dashboard">Build your identity core <ArrowRight /></Link></Button></div></section>
       </main>
