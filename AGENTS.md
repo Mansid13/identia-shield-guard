@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Project architecture
+
+- Keep public landing content at `/`; identity-monitoring tools live in dedicated TanStack routes sharing `AppShell`, so navigation and metadata remain consistent.
