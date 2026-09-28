@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as EvidenceLockerRouteImport } from './routes/evidence-locker'
+import { Route as IdentityCoreRouteImport } from './routes/identity-core'
+import { Route as IdentityGraphRouteImport } from './routes/identity-graph'
+import { Route as ShadowCheckRouteImport } from './routes/shadow-check'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvidenceLockerRoute = EvidenceLockerRouteImport.update({
+  id: '/evidence-locker',
+  path: '/evidence-locker',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IdentityCoreRoute = IdentityCoreRouteImport.update({
+  id: '/identity-core',
+  path: '/identity-core',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IdentityGraphRoute = IdentityGraphRouteImport.update({
+  id: '/identity-graph',
+  path: '/identity-graph',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShadowCheckRoute = ShadowCheckRouteImport.update({
+  id: '/shadow-check',
+  path: '/shadow-check',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/evidence-locker': typeof EvidenceLockerRoute
+  '/identity-core': typeof IdentityCoreRoute
+  '/identity-graph': typeof IdentityGraphRoute
+  '/shadow-check': typeof ShadowCheckRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/evidence-locker': typeof EvidenceLockerRoute
+  '/identity-core': typeof IdentityCoreRoute
+  '/identity-graph': typeof IdentityGraphRoute
+  '/shadow-check': typeof ShadowCheckRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/evidence-locker': typeof EvidenceLockerRoute
+  '/identity-core': typeof IdentityCoreRoute
+  '/identity-graph': typeof IdentityGraphRoute
+  '/shadow-check': typeof ShadowCheckRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/evidence-locker'
+    | '/identity-core'
+    | '/identity-graph'
+    | '/shadow-check'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/evidence-locker'
+    | '/identity-core'
+    | '/identity-graph'
+    | '/shadow-check'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/evidence-locker'
+    | '/identity-core'
+    | '/identity-graph'
+    | '/shadow-check'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRoute: typeof DashboardRoute
+  EvidenceLockerRoute: typeof EvidenceLockerRoute
+  IdentityCoreRoute: typeof IdentityCoreRoute
+  IdentityGraphRoute: typeof IdentityGraphRoute
+  ShadowCheckRoute: typeof ShadowCheckRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evidence-locker': {
+      id: '/evidence-locker'
+      path: '/evidence-locker'
+      fullPath: '/evidence-locker'
+      preLoaderRoute: typeof EvidenceLockerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/identity-core': {
+      id: '/identity-core'
+      path: '/identity-core'
+      fullPath: '/identity-core'
+      preLoaderRoute: typeof IdentityCoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/identity-graph': {
+      id: '/identity-graph'
+      path: '/identity-graph'
+      fullPath: '/identity-graph'
+      preLoaderRoute: typeof IdentityGraphRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shadow-check': {
+      id: '/shadow-check'
+      path: '/shadow-check'
+      fullPath: '/shadow-check'
+      preLoaderRoute: typeof ShadowCheckRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRoute: DashboardRoute,
+  EvidenceLockerRoute: EvidenceLockerRoute,
+  IdentityCoreRoute: IdentityCoreRoute,
+  IdentityGraphRoute: IdentityGraphRoute,
+  ShadowCheckRoute: ShadowCheckRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
