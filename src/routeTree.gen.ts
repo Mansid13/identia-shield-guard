@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as IdentityCoreRouteImport } from './routes/identity-core'
+import { Route as IdentityGraphRouteImport } from './routes/identity-graph'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IdentityCoreRoute = IdentityCoreRouteImport.update({
+  id: '/identity-core',
+  path: '/identity-core',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IdentityGraphRoute = IdentityGraphRouteImport.update({
+  id: '/identity-graph',
+  path: '/identity-graph',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/identity-core': typeof IdentityCoreRoute
+  '/identity-graph': typeof IdentityGraphRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/identity-core': typeof IdentityCoreRoute
+  '/identity-graph': typeof IdentityGraphRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/identity-core': typeof IdentityCoreRoute
+  '/identity-graph': typeof IdentityGraphRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/dashboard' | '/identity-core' | '/identity-graph'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/dashboard' | '/identity-core' | '/identity-graph'
+  id: '__root__' | '/' | '/dashboard' | '/identity-core' | '/identity-graph'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRoute: typeof DashboardRoute
+  IdentityCoreRoute: typeof IdentityCoreRoute
+  IdentityGraphRoute: typeof IdentityGraphRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/identity-core': {
+      id: '/identity-core'
+      path: '/identity-core'
+      fullPath: '/identity-core'
+      preLoaderRoute: typeof IdentityCoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/identity-graph': {
+      id: '/identity-graph'
+      path: '/identity-graph'
+      fullPath: '/identity-graph'
+      preLoaderRoute: typeof IdentityGraphRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRoute: DashboardRoute,
+  IdentityCoreRoute: IdentityCoreRoute,
+  IdentityGraphRoute: IdentityGraphRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
