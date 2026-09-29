@@ -1,7 +1,7 @@
 export const accounts = [
-  { platform: "Instagram", handle: "@mayarivera", audience: "18.4K followers", verified: "Jun 12, 2026", color: "plum" },
-  { platform: "GitHub", handle: "maya-rivera", audience: "42 repositories", verified: "Jun 12, 2026", color: "foreground" },
-  { platform: "LinkedIn", handle: "maya-rivera", audience: "2.8K connections", verified: "Jun 14, 2026", color: "teal" },
+  { platform: "Instagram", handle: "@mayarivera", profileUrl: "instagram.com/mayarivera", audience: "18.4K followers", verified: "Jun 12, 2026", color: "plum" },
+  { platform: "GitHub", handle: "maya-rivera", profileUrl: "github.com/maya-rivera", audience: "42 repositories", verified: "Jun 12, 2026", color: "foreground" },
+  { platform: "LinkedIn", handle: "maya-rivera", profileUrl: "linkedin.com/in/maya-rivera", audience: "2.8K connections", verified: "Jun 14, 2026", color: "teal" },
 ] as const;
 
 export const cases = [

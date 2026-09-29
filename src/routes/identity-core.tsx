@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { CheckCircle2, Github, Instagram, Linkedin, Link2, Plus, ShieldCheck } from "lucide-react";
+import { Link, createFileRoute } from "@tanstack/react-router";
+import { CheckCircle2, Github, Instagram, Linkedin, Link2, Plus, ScanSearch, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 import { AppShell } from "@/components/identia-app-shell";
 import { Button } from "@/components/ui/button";
