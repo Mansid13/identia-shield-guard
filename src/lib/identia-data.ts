@@ -12,3 +12,36 @@ export const cases = [
 ] as const;
 
 export type CaseItem = (typeof cases)[number];
+
+export const scanResults = [
+  {
+    id: "SD-4012",
+    platform: "Instagram",
+    handle: "@maya.rivera_official",
+    url: "instagram.com/maya.rivera_official",
+    similarity: 94,
+    risk: "High",
+    signals: ["Profile photo", "Display name", "Bio pattern"],
+    detail: "Uses your portrait and closely mirrors your public bio.",
+  },
+  {
+    id: "SD-4008",
+    platform: "LinkedIn",
+    handle: "Maya Rivera Careers",
+    url: "linkedin.com/in/maya-rivera-careers",
+    similarity: 82,
+    risk: "High",
+    signals: ["Name", "Work history", "Location"],
+    detail: "Represents itself as a recruiter using your professional identity.",
+  },
+  {
+    id: "SD-3997",
+    platform: "Website",
+    handle: "maya-rivera.dev",
+    url: "maya-rivera.dev",
+    similarity: 68,
+    risk: "Medium",
+    signals: ["Name", "Portfolio language", "Avatar style"],
+    detail: "A similar portfolio identity was found on an unrelated domain.",
+  },
+] as const;
