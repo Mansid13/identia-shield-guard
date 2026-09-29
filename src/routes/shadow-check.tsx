@@ -38,7 +38,7 @@ const scanSteps = [
   { label: "Ranking likely matches", detail: "Prioritizing profiles that need your review" },
 ] as const;
 
-const platformIcons = { Instagram, LinkedIn, Website: Globe2 };
+const platformIcons = { Instagram, LinkedIn: Linkedin, Website: Globe2 };
 
 function ShadowCheck() {
   const [state, setState] = useState<"idle" | "scanning" | "done">("idle");
@@ -136,14 +136,15 @@ function IdleState() {
 }
 
 function ScanningState({ step }: { step: number }) {
+  const activeStep = scanSteps[step] ?? scanSteps[0];
   const progress = ((step + 1) / scanSteps.length) * 100;
   return (
     <div className="p-6 sm:p-8">
       <div className="flex items-center gap-3">
         <LoaderCircle className="size-5 animate-spin text-teal" />
         <div>
-          <p className="text-sm font-bold">{scanSteps[step].label}</p>
-          <p className="mt-1 text-xs text-muted-foreground">{scanSteps[step].detail}</p>
+          <p className="text-sm font-bold">{activeStep.label}</p>
+          <p className="mt-1 text-xs text-muted-foreground">{activeStep.detail}</p>
         </div>
         <span className="ml-auto font-display text-xl font-bold text-teal">{Math.round(progress)}%</span>
       </div>
